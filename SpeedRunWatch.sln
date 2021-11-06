@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedRunWatchLib", "SpeedRunWatchLib\SpeedRunWatchLib.csproj", "{3DABF4FF-7A51-435E-8CC2-7467E92C4889}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DABF4FF-7A51-435E-8CC2-7467E92C4889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DABF4FF-7A51-435E-8CC2-7467E92C4889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DABF4FF-7A51-435E-8CC2-7467E92C4889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DABF4FF-7A51-435E-8CC2-7467E92C4889}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD75BF73-FA2E-4488-A340-F9D0F2104D3F}
+	EndGlobalSection
+EndGlobal
