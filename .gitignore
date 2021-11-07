@@ -4,3 +4,6 @@
 
 /.vs
 /SpeedRunWatchLib/obj
+/SpeedRunWatchLib/bin
+/SpeedRunWatchApplication/obj
+/SpeedRunWatchApplication/bin
