@@ -48,7 +48,6 @@ namespace SpeedRunWatchApplication
             this.ClientSize = new System.Drawing.Size(574, 229);
             this.ControlBox = false;
             this.Controls.Add(this.panelDisplay);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MinimumSize = new System.Drawing.Size(300, 150);
             this.Name = "FormMain";
             this.TopMost = true;
