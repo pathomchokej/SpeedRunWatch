@@ -55,6 +55,7 @@ namespace SpeedRunWatchApplication
             this.buttonControl.TabIndex = 0;
             this.buttonControl.Text = "Start";
             this.buttonControl.UseVisualStyleBackColor = true;
+            this.buttonControl.Click += new System.EventHandler(this.buttonControl_Click);
             // 
             // buttonReset
             // 
@@ -63,8 +64,9 @@ namespace SpeedRunWatchApplication
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(100, 45);
             this.buttonReset.TabIndex = 1;
-            this.buttonReset.Text = "Reset";
+            this.buttonReset.Text = "Stop";
             this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // buttonConfig
             // 
@@ -75,6 +77,7 @@ namespace SpeedRunWatchApplication
             this.buttonConfig.TabIndex = 2;
             this.buttonConfig.Text = "Config";
             this.buttonConfig.UseVisualStyleBackColor = true;
+            this.buttonConfig.Click += new System.EventHandler(this.buttonConfig_Click);
             // 
             // FormMain
             // 
@@ -90,6 +93,7 @@ namespace SpeedRunWatchApplication
             this.Name = "FormMain";
             this.Text = "Speed Run Watch";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 
         }

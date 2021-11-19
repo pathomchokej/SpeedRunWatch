@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SpeedRunWatchApplication
 {
-    class FontUtil
+    static class FontUtil
     {
-        private float GetFontSize(Graphics gr, string text, Font font, int areaWidth, int areaHeight, int margin, float min_size, float max_size)
+        public static float GetFontSize(Graphics gr, string text, Font font, int areaWidth, int areaHeight, int margin, float min_size, float max_size)
         {
             // Only bother if there's text.
             if (text.Length == 0 || gr == null) return min_size;

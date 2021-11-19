@@ -8,12 +8,14 @@ namespace SpeedRunWatchLib
 {
     public class SpeedRunWatch
     {
-        private enum State
+        public enum State
         {
             Running,
             Stop,
             Pause,
         }
+
+        public State ControlState => _state;
 
         private State _state = State.Stop;
         private DateTime _realTime = DateTime.MaxValue;
@@ -21,42 +23,41 @@ namespace SpeedRunWatchLib
         private DateTime _pauseTime = DateTime.MaxValue;
         private TimeSpan _speedRunSpan = TimeSpan.Zero;
 
-        public string GetRealTime()
+        public void GetTime(out string realTime, out string speedRunTime)
         {
-            switch(_state)
-            {
-                case State.Stop:
-                    return "Wait for start";
+            DateTime currentTime = DateTime.Now;
 
-                default:
-                    {
-                        TimeSpan timeSpand = DateTime.Now - _realTime;
-                        return FormmatTime(timeSpand);
-                    }
-            }
-        }
-
-        public string GetSpeedRunTime()
-        {
             switch (_state)
             {
                 case State.Stop:
-                    return "Wait for start";
+                    realTime = "Wait for start";
+                    speedRunTime = "Wait for start";
+                    break;
 
                 case State.Pause:
-                    return FormmatTime(_speedRunSpan);
+                    {
+                        TimeSpan realtimeSpand = currentTime - _realTime;
+                        realTime = FormmatTime(realtimeSpand);
+
+                        speedRunTime = FormmatTime(_speedRunSpan);
+                    }
+                    break;
 
                 default:
                     {
-                        TimeSpan timeSpand = DateTime.Now - _speedRunTime;
-                        return FormmatTime(timeSpand + _speedRunSpan);
+                        TimeSpan realtimeSpand = currentTime - _realTime;
+                        realTime = FormmatTime(realtimeSpand);
+
+                        TimeSpan timeSpand = currentTime - _speedRunTime;
+                        speedRunTime = FormmatTime(timeSpand + _speedRunSpan);
                     }
+                    break;
             }
         }
 
         private String FormmatTime(TimeSpan timeSpand)
         {
-            return timeSpand.ToString("C");
+            return timeSpand.ToString("c");
         }
 
         public void Start()
