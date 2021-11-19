@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,15 @@ namespace SpeedRunWatchApplication
         private SpeedRunWatchControl _control = new SpeedRunWatchControl();
         private Timer _timer = new Timer();
 
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd,
+                         int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
         public FormMain()
         {
             InitializeComponent();
@@ -26,8 +36,6 @@ namespace SpeedRunWatchApplication
 
             _timer.Interval = 100;
             _timer.Tick += OnTick;
-
-            RefreshButtonText();
         }
 
         private void OnGlobalKeyUp(object sender, KeyEventArgs e)
@@ -40,24 +48,6 @@ namespace SpeedRunWatchApplication
 
                 case Keys.OemPeriod:
                     this.buttonReset_Click(this, e);
-                    break;
-            }
-        }
-
-        private void RefreshButtonText()
-        {
-            switch (_watch.ControlState)
-            {
-                case SpeedRunWatch.State.Stop:
-                    buttonControl.Text = "Start";
-                    break;
-
-                case SpeedRunWatch.State.Pause:
-                    buttonControl.Text = "Resume";
-                    break;
-
-                case SpeedRunWatch.State.Running:
-                    buttonControl.Text = "Pause";
                     break;
             }
         }
@@ -92,16 +82,12 @@ namespace SpeedRunWatchApplication
                     _watch.Pause();
                     break;
             }
-
-            RefreshButtonText();
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
             _watch.Stop();
             _timer.Stop();
-
-            RefreshButtonText();
         }
 
         private void buttonConfig_Click(object sender, EventArgs e)
@@ -119,6 +105,21 @@ namespace SpeedRunWatchApplication
         protected override void OnClosed(EventArgs e)
         {
             InterceptKeys.EndHook();
+        }
+
+        private void FormMain_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+                MessageBox.Show("Context Menu");
+        }
+
+        private void FormMain_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
     }
 }

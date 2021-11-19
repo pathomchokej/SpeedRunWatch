@@ -63,5 +63,10 @@ namespace SpeedRunWatchApplication
         {
             RearrangeControl();
         }
+
+        private void OnLabelMouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
