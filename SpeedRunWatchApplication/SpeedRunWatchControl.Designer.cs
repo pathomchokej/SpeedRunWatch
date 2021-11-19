@@ -43,6 +43,8 @@ namespace SpeedRunWatchApplication
             this.labelRealTime.TabIndex = 0;
             this.labelRealTime.Text = "label1";
             this.labelRealTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelRealTime.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLabelMouseDown);
+            this.labelRealTime.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLabelMouseUp);
             // 
             // labelSpeedRunTime
             // 
@@ -54,6 +56,8 @@ namespace SpeedRunWatchApplication
             this.labelSpeedRunTime.TabIndex = 1;
             this.labelSpeedRunTime.Text = "label1";
             this.labelSpeedRunTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelSpeedRunTime.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnLabelMouseDown);
+            this.labelSpeedRunTime.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnLabelMouseUp);
             // 
             // SpeedRunWatchControl
             // 
