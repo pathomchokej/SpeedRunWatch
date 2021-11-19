@@ -33,6 +33,8 @@ namespace SpeedRunWatchApplication
 
             this.panelDisplay.Controls.Add(_control);
             _control.Dock = DockStyle.Fill;
+            _control.ControlMouseDown += FormMain_MouseDown;
+            _control.ControlMouseUp += FormMain_MouseUp;
 
             _timer.Interval = 100;
             _timer.Tick += OnTick;

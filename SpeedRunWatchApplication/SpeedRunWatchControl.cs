@@ -12,6 +12,9 @@ namespace SpeedRunWatchApplication
 {
     public partial class SpeedRunWatchControl : UserControl
     {
+        public event MouseEventHandler ControlMouseDown;
+        public event MouseEventHandler ControlMouseUp;
+
         public string RealTime
         {
             get => labelRealTime.Text;
@@ -66,7 +69,14 @@ namespace SpeedRunWatchApplication
 
         private void OnLabelMouseDown(object sender, MouseEventArgs e)
         {
+            if (null != ControlMouseDown)
+                ControlMouseDown.Invoke(this, e);
+        }
 
+        private void OnLabelMouseUp(object sender, MouseEventArgs e)
+        {
+            if (null != ControlMouseUp)
+                ControlMouseUp.Invoke(this, e);
         }
     }
 }
